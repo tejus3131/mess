@@ -1,0 +1,36 @@
+name: mess
+version: '0.1.0'
+summary: A CLI application to make machine bound encryption.
+description: It Uses AES Encryption to secure the files and create a UID for each machine differently and uses it to encrypt the data.
+grade: devel
+confinement: strict
+base: core22
+
+apps:
+  mess:
+    command: mess
+    plugs:
+      - home
+      - network
+      - system-observe
+
+parts:
+  mess:
+    source: .
+    plugin: python
+    python-packages:
+      - hatch
+    build-packages:
+      - build-essential
+      - python3-dev
+      - python3-pip
+      - python3-setuptools
+    stage-packages:
+      - libffi7
+      - libssl1.1
+      - dmidecode
+      - hdparm
+      - util-linux
+    after:
+      - snapcraftctl build
+

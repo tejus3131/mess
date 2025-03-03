@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mess"
+dynamic = ["version"]
+description = 'A CLI tool for securing the important files from attackers.'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = [
+  "Encryption",
+  "Security",
+  "Cryptography",
+  "Device Locking",
+  "CLI",
+  "Machine Binding",
+  "data-protection",
+  "file-encryption",
+  "AES",
+  "hardware-encryption",
+  "cli-tool",
+  "data-safety",
+  "local-only",
+  "decrypt-restriction",
+  "system-authentication"
+]
+authors = [
+  { name = "Tejus Gupta", email = "tejus3131@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Environment :: Console",
+  "Framework :: Hatch",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "click==8.1.8",
+  "cryptography==44.0.0"
+]
+
+[project.urls]
+Documentation = "..."
+Issues = "..."
+Source = "..."
+
+[tool.hatch.version]
+path = "src/mess/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/mess tests}"
+
+[tool.coverage.run]
+source_pkgs = ["mess", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/mess/__about__.py",
+]
+
+[tool.coverage.paths]
+mess = ["src/mess", "*/mess/src/mess"]
+tests = ["tests", "*/mess/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[project.scripts]
+mess = "mess:main"
