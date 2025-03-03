@@ -1,4 +1,4 @@
-name: mess
+name: mess31
 version: '0.1.0'
 summary: A CLI application to make machine bound encryption.
 description: It Uses AES Encryption to secure the files and create a UID for each machine differently and uses it to encrypt the data.
