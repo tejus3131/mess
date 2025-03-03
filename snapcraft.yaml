@@ -26,11 +26,11 @@ parts:
       - python3-pip
       - python3-setuptools
     stage-packages:
-      - libffi7
-      - libssl1.1
+      - libffi8
+      - libssl3
       - dmidecode
       - hdparm
       - util-linux
-    after:
-      - snapcraftctl build
+    override-build: |
+      snapcraftctl build
 
